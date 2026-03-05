@@ -1,85 +1,181 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
-
-const projects = [
-  {
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce with React, Node.js, and MySQL',
-    image: 'https://picsum.photos/600/400?random=1',
-    tech: ['React', 'Node.js', 'MySQL', 'Tailwind'],
-    github: 'https://github.com',
-    live: 'https://example.com',
-  },
-  {
-    title: 'AI Chat Application',
-    description: 'Real-time chat with AI integration using WebSockets',
-    image: 'https://picsum.photos/600/400?random=2',
-    tech: ['React', 'Express', 'Socket.io', 'OpenAI'],
-    github: 'https://github.com',
-    live: 'https://example.com',
-  },
-  {
-    title: 'Portfolio 2025',
-    description: 'This very portfolio with 3D and animations',
-    image: 'https://picsum.photos/600/400?random=3',
-    tech: ['React', 'Three.js', 'Tailwind', 'Framer'],
-    github: 'https://github.com',
-    live: 'https://example.com',
-  },
-];
+import { useInView } from 'react-intersection-observer';
+import VideoEditor from '../assets/Video-editor.png';
+import Inuproject from '../assets/inu.png';
+import Bank from '../assets/bank.png';
 
 const Projects = () => {
-  return (
-    <section id="projects" className="py-20 bg-white/80 dark:bg-dark-300/80 backdrop-blur-sm">
-      <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-center mb-12"
-        >
-          Featured <span className="gradient-text">Projects</span>
-        </motion.h2>
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [activeFilter, setActiveFilter] = useState('all');
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="glass rounded-2xl overflow-hidden group"
+  const projects = [
+    {
+      id: 1,
+      title: 'Video Editor Portfolio',
+      description: 'A responsive portfolio website for a video editor showcasing projects and skills.',
+      image: VideoEditor,
+      tags: ['React', 'Express', 'Resend Mail API', 'Tailwind CSS'],
+      category: 'fullstack',
+      liveUrl: 'https://epicedits-siol.vercel.app/',
+      githubUrl: 'https://github.com/ame12-max/video-editor-porifolio'
+    },
+    {
+      id: 2,
+      title: 'Injibara University Tech Club Platform',
+      description: 'Built a full-stack web application using React.js, Node.js, and MySQL featuring dual registration systems for both website accounts and computation courses. Implemented secure JWT authentication, role-based access control, and responsive Tailwind CSS design.',
+      image: Inuproject,
+      tags: ['React', 'Express', 'Mail API', 'MySQL'],
+      category: 'fullstack',
+      liveUrl: 'https://inu-tech-club.vercel.app',
+      githubUrl: 'https://github.com/ame12-max/tech-club'
+    },
+    {
+      id: 3,
+      title: 'Banking Management System',
+      description: 'Built a secure banking platform using React.js, Express.js, and MongoDB. Features include user account management, fund transfers, transaction history, and balance tracking. Implemented JWT authentication, encrypted data storage, and role-based access control.',
+      image: Bank,
+      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      category: 'fullstack',
+      liveUrl: 'https://banking-system-brown.vercel.app/dashboard',
+      githubUrl: 'https://github.com/ame12-max/Fullstack-banking-system'
+    },
+  ];
+
+  const filters = [
+    { key: 'all', label: 'All Projects' },
+    { key: 'fullstack', label: 'Fullstack' },
+    { key: 'frontend', label: 'Frontend' },
+    { key: 'backend', label: 'Backend' }
+  ];
+
+  const filteredProjects = activeFilter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
+
+  return (
+    <section id="projects" ref={ref} className="py-20 bg-white/80 dark:bg-dark-300/80 backdrop-blur-sm">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+              My <span className="gradient-text">Projects</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Here are some of my recent works that showcase my skills and experience 
+              in web development.
+            </p>
+          </div>
+
+          {/* Filter Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-4 mb-8"
+          >
+            {filters.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                  activeFilter === filter.key
+                    ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
+                    : 'glass text-gray-700 dark:text-gray-300 hover:bg-white/50 dark:hover:bg-dark-200/50'
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </motion.div>
+
+          {/* Projects Grid */}
+          <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                className="glass rounded-2xl overflow-hidden group"
+              >
+                {/* Project Image */}
+                <div className="relative overflow-hidden h-48">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-300/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+
+                {/* Project Content */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 rounded-full text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white text-center py-2 rounded-lg transition-all duration-300"
+                    >
+                      Live Demo
+                    </a>
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 glass text-gray-700 dark:text-gray-300 text-center py-2 rounded-lg hover:bg-white/50 dark:hover:bg-dark-200/50 transition-all duration-300"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* View More Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ delay: 0.8 }}
+            className="text-center mt-12"
+          >
+            <a
+              href="#contact"
+              className="px-8 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-full hover:shadow-lg transition-all inline-block"
             >
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-300 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-1 text-xs bg-purple-500/20 text-purple-600 dark:text-purple-300 rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex space-x-4">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-700 dark:text-gray-300 hover:text-purple-500 transition">
-                    <FiGithub />
-                  </a>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-2xl text-gray-700 dark:text-gray-300 hover:text-purple-500 transition">
-                    <FiExternalLink />
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              View More Projects
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
