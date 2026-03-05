@@ -5,15 +5,14 @@ import { Link } from 'react-router-dom';
 import Background3D from '../components/Background3D'; // or tsParticles version
 
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/amare', icon: FiGithub, color: '#333' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/amare', icon: FiLinkedin, color: '#0A66C2' },
-  { name: 'YouTube', url: 'https://youtube.com/@amare', icon: FiYoutube, color: '#FF0000' },
-  { name: 'Telegram', url: 'https://t.me/amare', icon: FaTelegram, color: '#26A5E4' },
-  { name: 'Twitter', url: 'https://twitter.com/amare', icon: FiTwitter, color: '#1DA1F2' },
-  { name: 'Instagram', url: 'https://instagram.com/amare', icon: FiInstagram, color: '#E4405F' },
-  { name: 'Discord', url: 'https://discord.gg/amare', icon: FaDiscord, color: '#5865F2' },
-  { name: 'WhatsApp', url: 'https://wa.me/1234567890', icon: FaWhatsapp, color: '#25D366' },
-  { name: 'Email', url: 'mailto:amare@example.com', icon: FiMail, color: '#EA4335' },
+  { name: 'GitHub', url: 'https://github.com/ame12-max', icon: FiGithub, color: '#333' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/amame12', icon: FiLinkedin, color: '#0A66C2' },
+  { name: 'YouTube', url: 'https://youtube.com/@TechSpire2112', icon: FiYoutube, color: '#FF0000' },
+  { name: 'Telegram', url: 'https://t.me/techspire_tech', icon: FaTelegram, color: '#26A5E4' },
+  { name: 'Twitter', url: 'https://x.com/AmareA98775', icon: FiTwitter, color: '#1DA1F2' },
+  { name: 'Instagram', url: 'https://instagram.com/amex44755', icon: FiInstagram, color: '#E4405F' },
+  { name: 'WhatsApp', url: 'https://wa.me/0969093096', icon: FaWhatsapp, color: '#25D366' },
+  { name: 'Email', url: 'mailto:amex44755@gmail.com', icon: FiMail, color: '#EA4335' },
 ];
 
 const Socials = () => {

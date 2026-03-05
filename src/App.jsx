@@ -6,8 +6,13 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import Home from './pages/Home';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Experience from './components/Experience'; 
 import Socials from './pages/Socials';
 import NotFound from './pages/NotFound';
+import About from './components/About';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +33,12 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/socials" element={<Socials />} />
-                <Route path="*" element={<NotFound />} />
+                <Route path='/skills' element={<Skills />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/projects' element={<Projects />} />
+                <Route path='/experience' element={<Experience />} />
+                <Route path='/contact' element={<Contact />} />
+                  <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
             </>
