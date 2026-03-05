@@ -1,121 +1,43 @@
+@import url('https://fonts.googleapis.com');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    @apply antialiased;
-  }
-}
-
-@layer components {
+@layer utilities {
   .glass {
-    @apply bg-white/10 dark:bg-dark-200/80 backdrop-blur-md border border-white/20 dark:border-gray-700/30;
+    @apply backdrop-blur-md bg-white/70 dark:bg-dark-200/50 border border-white/20 shadow-xl;
   }
-  
-  .nav-link {
-    @apply relative px-4 py-2 font-medium transition-all duration-300 hover:text-primary-500;
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent bg-[length:300%_300%] animate-gradient-x;
   }
-  
-  .nav-link::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300;
+  .animation-delay-2000 {
+    animation-delay: 2s;
   }
-  
-  .nav-link:hover::after {
-    @apply w-full;
-  }
-  
-  .btn-primary {
-    @apply px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
-  }
-  
-  .btn-secondary {
-    @apply px-6 py-3 border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-semibold rounded-lg transition-all duration-300;
-  }
-  
-  .section-padding {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
-  }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto;
+  .animation-delay-4000 {
+    animation-delay: 4s;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+@layer base {
+  body {
+    @apply text-gray-900 dark:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 dark:text-white;
+  }
+}
+body {
+  background-color: #ffffff;
+  color: #1a202c;
+  transition-property: background-color, color;
+  transition-duration: 300ms;
+  font-family: inter, sans-serif;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-dark-200;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary-500 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-600;
-}
-
-/* Typing animation */
-.typing-container {
-  overflow: hidden;
-  border-right: 3px solid;
-  white-space: nowrap;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #3b82f6; }
-}
-
-/* Gradient text */
-.gradient-text {
-  @apply bg-gradient-to-r from-primary-500 to-purple-600 bg-clip-text text-transparent;
-}
-
-/* Floating animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.float-animation {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Mobile menu animations */
-.mobile-menu-enter {
-  opacity: 0;
-  transform: translateY(-20px);
-}
-
-.mobile-menu-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.mobile-menu-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.mobile-menu-exit-active {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 300ms, transform 300ms;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a202c;
+    color: #ffffff;
+  }
 }

@@ -1,38 +1,33 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
-export function useTypewriter({ words, loop = true, delay = 100, deleteSpeed = 50 }) {
-  const [currentText, setCurrentText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [speed, setSpeed] = useState(delay)
+export const useTypewriter = ({ words, loop = true, delay = 100, deleteSpeed = 50 }) => {
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentWord = words[currentIndex]
-    
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing forward
-        setCurrentText(currentWord.substring(0, currentText.length + 1))
-        setSpeed(delay)
-        
-        if (currentText === currentWord) {
-          // Start deleting after a pause
-          setTimeout(() => setIsDeleting(true), 1000)
+    const currentWord = words[wordIndex % words.length];
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          setText(currentWord.substring(0, text.length + 1));
+          if (text.length === currentWord.length) {
+            if (loop) {
+              setTimeout(() => setIsDeleting(true), 1000);
+            }
+          }
+        } else {
+          setText(currentWord.substring(0, text.length - 1));
+          if (text.length === 0) {
+            setIsDeleting(false);
+            setWordIndex((prev) => (prev + 1) % words.length);
+          }
         }
-      } else {
-        // Deleting
-        setCurrentText(currentWord.substring(0, currentText.length - 1))
-        setSpeed(deleteSpeed)
-        
-        if (currentText === '') {
-          setIsDeleting(false)
-          setCurrentIndex((prev) => (prev + 1) % words.length)
-        }
-      }
-    }, speed)
+      },
+      isDeleting ? deleteSpeed : delay
+    );
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, wordIndex, words, loop, delay, deleteSpeed]);
 
-    return () => clearTimeout(timer)
-  }, [currentText, currentIndex, isDeleting, words, delay, deleteSpeed, speed])
-
-  return [currentText]
-}
+  return [text];
+};
