@@ -8,7 +8,7 @@ import {
 const skills = [
   { name: 'React', icon: SiReact, level: 90, color: '#61DAFB' },
   { name: 'Node.js', icon: SiNodedotjs, level: 85, color: '#68A063' },
-  { name: 'Express', icon: SiExpress, level: 80, color: '#ffffff' },
+  { name: 'Express', icon: SiExpress, level: 80, color: '#808080' },
   { name: 'MySQL', icon: SiMysql, level: 75, color: '#00758F' },
   { name: 'JavaScript', icon: SiJavascript, level: 95, color: '#F7DF1E' },
   { name: 'HTML5', icon: SiHtml5, level: 95, color: '#E44D26' },

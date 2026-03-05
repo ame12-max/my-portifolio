@@ -28,7 +28,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold text-center mb-12"
+          className="text-4xl font-bold text-center mb-5"
         >
           About <span className="gradient-text">Me</span>
         </motion.h2>
@@ -52,13 +52,12 @@ const About = () => {
             className="md:w-2/3"
           >
             <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
-              I'm a passionate Fullstack Developer with 5+ years of experience building web applications.
-              I love creating elegant solutions to complex problems and staying up-to-date with the latest technologies.
+            I'm a passionate Full-Stack Developer who enjoys building reliable systems and modern web applications. I focus on writing clean, scalable code and creating efficient solutions to real-world problems while continuously learning new technologies.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-8">
-              <Counter value={5} label="Years Experience" />
+              <Counter value={1} label="Years Experience" />
               <Counter value={20} label="Projects Completed" />
-              <Counter value={10} label="Technologies" />
+              <Counter value={5} label="Technologies" />
             </div>
           </motion.div>
         </div>
