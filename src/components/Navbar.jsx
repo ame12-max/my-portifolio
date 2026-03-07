@@ -52,7 +52,7 @@ const Navbar = () => {
           duration={500}
           activeClass="text-purple-500 border-b-2 border-purple-500"
           onClick={onClick}
-          className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
+          className="text-gray-700 font-[20px] dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors cursor-pointer"
         >
           {item}
         </ScrollLink>
