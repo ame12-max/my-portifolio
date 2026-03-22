@@ -15,7 +15,7 @@ const socialLinks = [
   { name: 'Email', url: 'mailto:amex44755@gmail.com', icon: FiMail, color: '#EA4335' }, 
   {
     name: 'Telegram Channel',
-    url: 'https://t.me/techspire_tech_channel',
+    url: 'https://t.me/techspire_tech',
     icon: FaTelegram,
     color: '#26A5E4'
   },
