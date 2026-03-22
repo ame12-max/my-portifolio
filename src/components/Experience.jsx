@@ -3,25 +3,25 @@ import { useInView } from 'react-intersection-observer';
 
 const experiences = [
   {
-    year: '2023 - Present',
-    title: 'Senior Fullstack Developer',
-    company: 'Tech Innovators Inc.',
-    description: 'Leading development of scalable web applications, mentoring juniors, and architecting cloud solutions.',
+    year: '2025 - Present',
+    title: 'Fullstack Developer (Self-Driven)',
+    company: 'Personal Projects',
+    description: 'Designing and building fullstack web applications using React, Node.js, Express, and MySQL/PostgreSQL. Focused on authentication systems, dashboards, and real-world features like payments and referrals.',
     icon: '🚀',
   },
   {
-    year: '2020 - 2023',
-    title: 'Fullstack Developer',
-    company: 'Digital Solutions Ltd.',
-    description: 'Built and maintained multiple client projects using MERN stack, improved performance by 40%.',
+    year: '2024 - 2025',
+    title: 'Frontend Developer',
+    company: 'Personal Projects',
+    description: 'Developed responsive and interactive user interfaces using React, Tailwind CSS, and modern JavaScript. Built projects like e-commerce platforms and admin dashboards.',
     icon: '💻',
   },
   {
-    year: '2018 - 2020',
-    title: 'Frontend Developer',
-    company: 'Creative Agency',
-    description: 'Developed responsive websites and interactive UI components with React and Vue.',
-    icon: '🎨',
+    year: '2024',
+    title: 'Web Development Learner',
+    company: 'Self-Learning',
+    description: 'Learned core web development fundamentals including HTML, CSS, JavaScript, and backend basics. Built small projects to understand UI/UX, APIs, and database integration.',
+    icon: '📚',
   },
 ];
 

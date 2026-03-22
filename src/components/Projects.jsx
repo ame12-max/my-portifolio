@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import VideoEditor from '../assets/Video-editor.png';
 import Inuproject from '../assets/inu.png';
-import Bank from '../assets/bank.png';
+import Hotel from '../assets/hotel-booking.png';
 
 const Projects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -16,7 +16,7 @@ const Projects = () => {
       description: 'A responsive portfolio website for a video editor showcasing projects and skills.',
       image: VideoEditor,
       tags: ['React', 'Express', 'Resend Mail API', 'Tailwind CSS'],
-      category: 'fullstack',
+      category: 'frontend',
       liveUrl: 'https://epicedits-siol.vercel.app/',
       githubUrl: 'https://github.com/ame12-max/video-editor-porifolio'
     },
@@ -32,14 +32,14 @@ const Projects = () => {
     },
     {
       id: 3,
-      title: 'Banking Management System',
-      description: 'Built a secure banking platform using React.js, Express.js, and MongoDB. Features include user account management, fund transfers, transaction history, and balance tracking. Implemented JWT authentication, encrypted data storage, and role-based access control.',
-      image: Bank,
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      title: 'Hotel Finding and Booking System',
+      description: 'I built an integrated hotel management and booking system with an advanced database design using ACID transactions and locking, secure authentication, and a user-friendly interface. The system allows users to search for hotels by city or by name, view hotel details, and make bookings seamlessly.',
+      image: Hotel,
+      tags: ['React', 'Node.js', 'Mysql', ],
       category: 'fullstack',
-      liveUrl: 'https://banking-system-brown.vercel.app/dashboard',
-      githubUrl: 'https://github.com/ame12-max/Fullstack-banking-system'
-    },
+      liveUrl: 'https://hotel-booking-gilt-three.vercel.app',
+      githubUrl: 'https://github.com/ame12-max/Hotel-booking'
+    }
   ];
 
   const filters = [

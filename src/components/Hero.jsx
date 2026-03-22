@@ -4,7 +4,7 @@ import profile from '../assets/profile.png';
 
 const Hero = () => {
   const [text] = useTypewriter({
-    words: ['Fullstack Developer', 'UI/UX Enthusiast', 'Problem Solver', 'Tech Innovator'],
+    words: ['Fullstack Developer', 'Restful API Developer', 'Problem Solver', 'Tech Innovator'],
     loop: true,
     delay: 70,
     deleteSpeed: 50,
